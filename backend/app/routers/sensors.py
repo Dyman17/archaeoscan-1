@@ -15,7 +15,7 @@ from app.schemas import (
     CalibrationResponse, ReportResponse, TimeRangeFilter, AnalysisResult
 )
 from app.services.preservation_index import calculate_multi_point_preservation
-from app.services.material_classification import classify_material
+# from app.services.material_classification import classify_material  # Disabled to avoid sklearn dependency
 from app.websocket import manager, SensorData
 from datetime import datetime
 
