@@ -1,1 +1,0 @@
-"""ArchaeoScan Backend Application Package"""
