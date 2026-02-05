@@ -85,6 +85,17 @@ app.include_router(esp32_data_router, prefix="/api/esp32", tags=["esp32"])
 async def root():
     return {"message": "Welcome to ArchaeoScan Backend API"}
 
+@app.get("/mini-site")
+async def mini_site():
+    """Serve mini monitoring site for ESP32/Raspberry Pi"""
+    from fastapi.responses import HTMLResponse
+    try:
+        with open("mini_site.html", "r", encoding="utf-8") as f:
+            html_content = f.read()
+        return HTMLResponse(content=html_content, status_code=200)
+    except FileNotFoundError:
+        return HTMLResponse(content="<h1>Mini site not found</h1>", status_code=404)
+
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
